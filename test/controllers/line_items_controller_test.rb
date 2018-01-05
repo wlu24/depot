@@ -28,9 +28,9 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     # redirect: a page with a heading identifying that they’re looking at a cart,
     # with a list item corresponding to the product they added.
     follow_redirect!
-    assert_select 'h2', 'Your Pragmatic Cart'
-    # \u00D7 == &times;     see views/carts/show for more detail
-    assert_select 'li', "1 \u00D7 Programming Ruby 1.9"
+
+    assert_select 'h2', 'Your Cart'
+    assert_select 'td', "Programming Ruby 1.9"
   end
 
   test "should show line_item" do
