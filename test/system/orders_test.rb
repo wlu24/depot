@@ -6,6 +6,20 @@ class OrdersTest < ApplicationSystemTestCase
 
   test "check routing number" do
 
+    # To test the full, end-to-end workflow, including execution of Active Jobs,
+    # you want to do the following:
+    #
+    # 1. Add a book to the cart.
+    # 2. Fill in the checkout form completely (including selecting a pay type).
+    # 3. Submit the order.
+    # 4. Process all background jobs.
+    # 5. Check that the order was created properly.
+    # 6. Check that email was sent.
+
+
+
+
+
     # clear out any orders in the test database that might be hanging around
     # from previous test runs
     LineItem.delete_all
