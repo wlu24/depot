@@ -64,5 +64,5 @@ class Order < ApplicationRecord
       raise payment_result.error
     end
   end
-  
+
 end

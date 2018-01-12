@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
 
-        # send it in a background job, as opposed to deliver_now
-        OrderMailer.received(@order).deliver_later
+        ChargeOrderJob.perform_later(@order,pay_type_params.to_h)
 
         format.html { redirect_to store_index_url, notice:
           'Thank you for your order.' }

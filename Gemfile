@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'webpacker', '~> 3.0'
-
+gem 'activemodel-serializers-xml'
 
 
 
