@@ -38,6 +38,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'webpacker', '~> 3.0'
 gem 'activemodel-serializers-xml'
 
+# Since React is rendering our payment details components—–not Rails—–we need to
+# make our translations available to React, meaning they must be available in
+# JavaScript. The i18n-js library will make a copy of our translations as a
+# JavaScript object and provide an object called I18n that allows us to access
+# them. Our React compo- nents will use that to provide localized strings for
+# the dynamic form we created earlier.
+gem 'i18n-js'
 
 
 group :development, :test do

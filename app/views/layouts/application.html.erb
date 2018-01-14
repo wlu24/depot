@@ -7,6 +7,14 @@
                             'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
+
+    <%# Tell i18n-js what the currently chosen locale is. %>
+    <%# Put this tag after the call to javascript_include_tag() so that I18n %>
+    <%# will have been defined. %>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale        = "<%= I18n.locale %>";
+    </script>
   </head>
 
   <body>

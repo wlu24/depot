@@ -1,22 +1,20 @@
 import React from 'react'
 
-import NoPayType              from './NoPayType';
-import CreditCardPayType      from './CreditCardPayType';
-import CheckPayType           from './CheckPayType';
-import PurchaseOrderPayType   from './PurchaseOrderPayType';
+import NoPayType            from './NoPayType';
+import CreditCardPayType    from './CreditCardPayType';
+import CheckPayType         from './CheckPayType';
+import PurchaseOrderPayType from './PurchaseOrderPayType';
 
 class PayTypeSelector extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.onPayTypeSelected = this.onPayTypeSelected.bind(this);
     this.state = { selectedPayType: null };
   }
-  
+
   onPayTypeSelected(event) {
     this.setState({ selectedPayType: event.target.value });
   }
-
 
   render() {
     let PayTypeCustomComponent = NoPayType;
@@ -27,29 +25,36 @@ class PayTypeSelector extends React.Component {
     } else if (this.state.selectedPayType == "Purchase order") {
       PayTypeCustomComponent = PurchaseOrderPayType;
     }
-
-    /*
-      In addition to adding <PayTypeCustomComponent />, we’ve wrapped the entire
-      thing in a div. React components must have a single, top-level element;
-      and due to the way our CSS works, each line of our form must be inside a
-      div with the CSS class field.
-    */
     return (
       <div>
         <div className="field">
-          <label htmlFor="order_pay_type">Pay type</label>
+          <label htmlFor="order_pay_type">
+            {I18n.t("orders.form.pay_type")}
+          </label>
+
           <select id="pay_type" onChange={this.onPayTypeSelected}
             name="order[pay_type]">
-            <option value="">Select a payment method</option>
-            <option value="Check">Check</option>
-            <option value="Credit card">Credit card</option>
-            <option value="Purchase order">Purchase order</option>
+            <option value="">
+              {I18n.t("orders.form.pay_prompt_html")}
+            </option>
+
+            <option value="Check">
+              {I18n.t("orders.form.pay_types.check")}
+            </option>
+
+            <option value="Credit card">
+              {I18n.t("orders.form.pay_types.credit_card")}
+            </option>
+
+            <option value="Purchase order">
+              {I18n.t("orders.form.pay_types.purchase_order")}
+            </option>
+
           </select>
         </div>
         <PayTypeCustomComponent />
       </div>
     );
   }
-
 }
 export default PayTypeSelector

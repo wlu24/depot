@@ -13,3 +13,15 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+
+// We need to tell Rails to serve up the translations that i18n-js provides and
+// make the I18n object available.
+//
+// These directives tell Rails to include the referenced JavaScript libraries
+// when serving up pages. Since the JavaScript files that come with i18n-js are
+// inside a gem, we have to do this explicitly.
+//= require i18n
+//= require i18n/translations
